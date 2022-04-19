@@ -1,0 +1,36 @@
+/* Footer legal */
+.ft__legal {
+    padding: 0.9375rem 1.875rem;
+    background-color: gray;
+  }
+  .ft__legal__list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ft__legal__list li {
+    margin: 0.125rem 0.625rem;
+    white-space: nowrap;
+    list-style-type: none;
+  }
+
+  .ft__legal__list a {
+    text-decoration: underline;
+  }
+
+  /* one before the last child */
+  .ft__legal__list li:nth-last-child(2) {
+      flex: 1;
+  }
+
+  .buttonGit{
+    background:    #20124d;
+    border-radius: 11px;
+    box-shadow:    0 4px #444444;
+    padding:       4px 8px;
+    color:         #f42323;
+    display:       inline-block;
+    font:          normal bold 13px/1 "Open Sans", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px #000000;
+  }

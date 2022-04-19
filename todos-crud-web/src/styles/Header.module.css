@@ -1,0 +1,21 @@
+  .header__main {
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  
+  .logo__header,
+  .nav__header {
+    flex: 1;
+  }
+  
+
+  .nav__header ul {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .nav__header li {
+    list-style: none;
+  }
