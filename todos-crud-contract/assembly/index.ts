@@ -3,9 +3,9 @@ import { Todo, PartialTodo } from "./model";
 
 // export the create method. This acts like an endpoint
 // that we'll be able to call from our web app.
-export function create(task: string, priority: string): Todo {
+export function create(task: string, priority: string, importance: u32): Todo {
   // use the Todo class to persist the todo data
-  return Todo.insert(task, priority);
+  return Todo.insert(task, priority, importance);
 }
 
 export function getById(id: u32): Todo {

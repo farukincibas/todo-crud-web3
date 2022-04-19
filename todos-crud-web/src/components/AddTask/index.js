@@ -29,8 +29,10 @@ const CreateTodo = ({ contract, setLoading }) => {
     }
 
     if (task.length > 0 && priority.length > 0) {
+        console.log(importance);
+        console.log(typeof importance);
       // invoke the smart contract's create method
-      const todo = await contract.create({ task, priority });
+      const todo = await contract.create({ task, priority, importance });
       console.log(todo);
       setTask("");
       setLoading(false);

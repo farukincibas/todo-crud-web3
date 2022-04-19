@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import CreateTodo from "./components/AddTask";
-import TodoList from "./components/TodoList";
+import TableTodoList from "./components/Table";
 
 const App = ({ contract, currentUser, nearConfig, wallet }) => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
           </h2>
 
           <CreateTodo contract={contract} setLoading={setLoading}/>
-          <TodoList loading={loading} contract={contract} />
+          <TableTodoList loading={loading} contract={contract} />
         </div>
       ) : (
         <div>
