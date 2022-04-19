@@ -1,11 +1,10 @@
 // src/components/CreateTodo.js
 import { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import styles from "../styles/AddTask.module.css";
+import styles from "../../styles/AddTask.module.css";
 
-const CreateTodo = ({ contract }) => {
+const CreateTodo = ({ contract, setLoading }) => {
   const [task, setTask] = useState("");
-  const [loading, setLoading] = useState(false);
   const [priority, setPriority] = useState("");
 
   const handleAdd = async (event) => {

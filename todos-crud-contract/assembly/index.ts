@@ -12,8 +12,8 @@ export function getById(id: u32): Todo {
   return Todo.findById(id);
 }
 
-export function get(offset: u32, limit: u32 = 10): Todo[] {
-  return Todo.find(offset, limit);
+export function get(): Todo[] {
+  return Todo.find();
 }
 
 export function update(id: u32, updates: PartialTodo): Todo {

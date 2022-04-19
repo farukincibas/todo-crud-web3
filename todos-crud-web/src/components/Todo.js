@@ -1,9 +1,9 @@
 // src/components/Todo.js
 import { useState } from "react";
 
-export function Todo({ contract, id, task, done }) {
+export function Todo({ contract, id, task, priority, done }) {
   const [checked, setChecked] = useState(done);
-  
+
   const complete = ({ target }) => {
     setChecked(target.checked);
     contract.update({ id, updates: { task, done: target.checked } });
@@ -19,9 +19,11 @@ export function Todo({ contract, id, task, done }) {
     <>
       <p>
         <input type="checkbox" checked={checked} onChange={complete} />
-        {task}
+        {task} {priority}
       </p>
       <button onClick={del}>delete</button>
+
+      
     </>
   );
 }
