@@ -2,15 +2,15 @@
 import { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import styles from "../../styles/AddTask.module.css";
+import Loader from "../../components/Loader";
 
 const CreateTodo = ({ contract, setLoading }) => {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleAdd = async (event) => {
     event.preventDefault();
-
-    setLoading(true);
 
     let importance = 0;
     switch (priority) {
@@ -29,12 +29,12 @@ const CreateTodo = ({ contract, setLoading }) => {
     }
 
     if (task.length > 0 && priority.length > 0) {
-        console.log(importance);
-        console.log(typeof importance);
+      setLoading(true);
+      setLoader(true);
       // invoke the smart contract's create method
-      const todo = await contract.create({ task, priority, importance });
-      console.log(todo);
+      await contract.create({ task, priority, importance });
       setTask("");
+      setLoader(false);
       setLoading(false);
     } else {
       alert("Please provide name and urgent info you given empty");
@@ -72,7 +72,7 @@ const CreateTodo = ({ contract, setLoading }) => {
             name="jname"
           ></input>
         </div>
-
+        <Loader loader={loader}></Loader>
         <div className={styles.flexColumOne}>
           <label>Job Priority</label>
           <select

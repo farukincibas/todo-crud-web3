@@ -1,6 +1,15 @@
-# CRUD App Tutorial
+# CRUD App Todo DataTable 
 
-This contains the finished code for the tutorial on [building a CRUD dApp](https://docs.near.org/docs/tutorials/apps/todos-crud-app)
+This Project forked https://github.com/near-examples/crud-tutorial and lots of changes happen.
+
+I inspired by that project and build own todo app with datatable.
+# Added on app 
+A new job record can be created by selecting the job's name and priority. All fields are mandatory.
+Ability to sort by name and priority in listing (ordered from default Urgent to normal)
+Filtering by name and priority in listing
+The jobs in the list are shown in different colors or marked with different colors according to their priority.
+ a. * Ability to edit jobs in the list. I. Only the severity can change.
+ b. * Delete feature i. It will be deleted only after approval.
 
 # Notes
 

@@ -4,9 +4,11 @@ import styles from "../../styles/Table.module.css";
 import addTaskStyles from "../../styles/AddTask.module.css";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
 import CustomPopup from "../../components/Popup";
+import Loader from "../../components/Loader";
 
 const TodoList = ({ contract, loading }) => {
   const [tasks, setTasks] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [visibilityDelete, setVisibilityDelete] = useState(false);
   const [visibilityUpdate, setVisibilityUpdate] = useState(false);
@@ -27,19 +29,22 @@ const TodoList = ({ contract, loading }) => {
 
   const handleDelete = (e, id) => {
     e.preventDefault();
+    setLoader(true);
     contract.del({ id }).then(() => {
       contract.get().then((task) => setTasks(task));
+      setLoader(false);
     });
     popupCloseHandler();
   };
 
   const handleChange = ({ id, name, priority, importance }) => {
     let task = name;
-
+    setLoader(true);
     contract
       .update({ id, updates: { task, priority, importance } })
       .then(() => {
         contract.get().then((task) => setTasks(task));
+        setLoader(false);
       });
 
     if (name.length > 0 && priority !== "all") {
@@ -219,7 +224,7 @@ const TodoList = ({ contract, loading }) => {
     <>
       <h4>Job List</h4>
       <FilterableTaskTable tasks={tasks}></FilterableTaskTable>
-
+      <Loader loader={loader}></Loader>
       <CustomPopup onClose={popupCloseHandler} show={visibility}>
         {visibilityDelete && (
           <>
