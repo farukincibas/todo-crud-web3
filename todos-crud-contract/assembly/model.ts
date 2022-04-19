@@ -6,6 +6,7 @@ export const todos = new PersistentUnorderedMap<u32, Todo>("todos");
 @nearBindgen
 export class PartialTodo {
   task: string;
+  priority: string;
   done: bool;
 }
 
@@ -13,17 +14,19 @@ export class PartialTodo {
 export class Todo {
   id: u32;
   task: string;
+  priority: string;
   done: bool;
 
-  constructor(task: string) {
+  constructor(task: string, priority: string) {
     this.id = math.hash32<string>(task);
     this.task = task;
+    this.priority = priority;
     this.done = false;
   }
 
-  static insert(task: string): Todo {
+  static insert(task: string, priority: string): Todo {
     // create a new Todo
-    const todo = new Todo(task);
+    const todo = new Todo(task, priority);
 
     // add the todo to the PersistentUnorderedMap
     // where the key is the todo's id and the value
